@@ -524,6 +524,10 @@ def animate_features_in_2d(
     """
     ZERO_THRESHOLD = 1e-3
 
+    # Load D3.js source inline so HTML works without external script loading
+    d3_path = Path(__file__).parent / "d3.v7.min.js"
+    d3_source = d3_path.read_text()
+
     # TODO - maybe it's okay to specify "W_mag" when it doesn't already exist? Although kinda bad practice to have that here?
     # Check all the rows we're trying to plot are valid
     invalid_rows = [row for row in rows if row not in ["W_enc", "W_gate", "W_mag", "_W_dec", "h", "h_r"]]
@@ -690,7 +694,7 @@ def animate_features_in_2d(
 <div id="svg-containers"></div>
 {play_button}
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>{d3_source}</script>
 <script>
     const data = {json.dumps(plot_data)};
     const row_data = {json.dumps(row_data)};
