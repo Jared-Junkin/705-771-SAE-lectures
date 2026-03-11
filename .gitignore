@@ -1,3 +1,7 @@
 __pycache__/
+*.html
 *.pt
+*.js
+*.zip
+dictionaries/
 dictionary_learning/
